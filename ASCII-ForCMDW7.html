@@ -3,70 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extended ASCII Table for CMD (Windows 7) Create By : Mr.exe</title>
+    <title>Enhanced ASCII Table for CMD</title>
     <style>
-        body { font-family: Consolas, monospace; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { padding: 8px; text-align: center; border: 1px solid #ddd; }
-        th { background-color: #f2f2f2; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
+        body { font-family: Arial, sans-serif; background-color: #f5f5f5; margin: 20px; }
+        h1 { text-align: center; color: #333; }
+        
+        .table-container { 
+            overflow-x: auto; 
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 20px 0; 
+            font-size: 14px; 
+            text-align: center;
+            border-radius: 8px;
+            background-color: transparent; /* Background tabel transparan */
+        }
+        
+        th, td { 
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            cursor: pointer;
+        }
+        
+        th { 
+            background-color: #4CAF50; 
+            color: white;
+        }
+        
+        tr:nth-child(even) { 
+            background-color: rgba(255, 255, 255, 0.5); 
+        }
+        
+        tr:hover { 
+            background-color: rgba(255, 255, 255, 0.7); 
+        }
+        
+        /* Tooltip for copied message */
+        .tooltip {
+            visibility: hidden;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            top: -5px;
+            right: 105%;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .show-tooltip .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-    <h1>Extended ASCII Table for CMD (Windows 7) - Code Page 437</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Decimal Code</th>
-                <th>Hexadecimal Code</th>
-                <th>Int8</th>
-                <th>Binary</th>
-                <th>Character</th>
-                <th>Display</th>
-            </tr>
-        </thead>
-        <tbody>
-            <script>
-                // Code Page 437 specific characters for CMD
-                const cp437 = {
-                    1: '☺', 2: '☻', 3: '♥', 4: '♦', 5: '♣', 6: '♠', 7: '•', 8: '◘', 9: '○', 10: '◙',
-                    11: '♂', 12: '♀', 13: '♪', 14: '♫', 15: '☼', 16: '►', 17: '◄', 18: '↕', 19: '‼', 20: '¶',
-                    21: '§', 22: '▬', 23: '↨', 24: '↑', 25: '↓', 26: '→', 27: '←', 28: '∟', 29: '↔', 30: '▲',
-                    31: '▼', 127: '⌂', 128: 'Ç', 129: 'ü', 130: 'é', 131: 'â', 132: 'ä', 133: 'à', 134: 'å',
-                    135: 'ç', 136: 'ê', 137: 'ë', 138: 'è', 139: 'ï', 140: 'î', 141: 'ì', 142: 'Ä', 143: 'Å',
-                    144: 'É', 145: 'æ', 146: 'Æ', 147: 'ô', 148: 'ö', 149: 'ò', 150: 'û', 151: 'ù', 152: 'ÿ',
-                    153: 'Ö', 154: 'Ü', 155: '¢', 156: '£', 157: '¥', 158: '₧', 159: 'ƒ', 160: 'á', 161: 'í',
-                    162: 'ó', 163: 'ú', 164: 'ñ', 165: 'Ñ', 166: 'ª', 167: 'º', 168: '¿', 169: '⌐', 170: '¬',
-                    171: '½', 172: '¼', 173: '¡', 174: '«', 175: '»', 176: '░', 177: '▒', 178: '▓', 179: '│',
-                    180: '┤', 181: '╡', 182: '╢', 183: '╖', 184: '╕', 185: '╣', 186: '║', 187: '╗', 188: '╝',
-                    189: '╜', 190: '╛', 191: '┐', 192: '└', 193: '┴', 194: '┬', 195: '├', 196: '─', 197: '┼',
-                    198: '╞', 199: '╟', 200: '╚', 201: '╔', 202: '╩', 203: '╦', 204: '╠', 205: '═', 206: '╬',
-                    207: '╧', 208: '╨', 209: '╤', 210: '╥', 211: '╙', 212: '╘', 213: '╒', 214: '╓', 215: '╫',
-                    216: '╪', 217: '┘', 218: '┌', 219: '█', 220: '▄', 221: '▌', 222: '▐', 223: '▀', 224: 'α',
-                    225: 'ß', 226: 'Γ', 227: 'π', 228: 'Σ', 229: 'σ', 230: 'µ', 231: 'τ', 232: 'Φ', 233: 'Θ',
-                    234: 'Ω', 235: 'δ', 236: '∞', 237: 'φ', 238: 'ε', 239: '∩', 240: '≡', 241: '±', 242: '≥',
-                    243: '≤', 244: '⌠', 245: '⌡', 246: '÷', 247: '≈', 248: '°', 249: '∙', 250: '·', 251: '√',
-                    252: 'ⁿ', 253: '²', 254: '■', 255: ' '
-                };
+    <h1>ASCII Table with Int8 and Binary for CMD (Windows 7)</h1>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Decimal Code</th>
+                    <th>Hexadecimal Code</th>
+                    <th>Int8</th>
+                    <th>Binary</th>
+                    <th>Character</th>
+                    <th>Display</th>
+                </tr>
+            </thead>
+            <tbody>
+                <script>
+                    // Code Page 437 specific characters for CMD
+                    const cp437 = {
+                        1: '☺', 2: '☻', 3: '♥', 4: '♦', 5: '♣', 6: '♠', 7: '•', 8: '◘', 9: '○', 10: '◙',
+                        11: '♂', 12: '♀', 13: '♪', 14: '♫', 15: '☼', 16: '►', 17: '◄', 18: '↕', 19: '‼', 20: '¶',
+                        21: '§', 22: '▬', 23: '↨', 24: '↑', 25: '↓', 26: '→', 27: '←', 28: '∟', 29: '↔', 30: '▲',
+                        31: '▼', 127: '⌂', 128: 'Ç', 129: 'ü', 130: 'é', 131: 'â', 132: 'ä', 133: 'à', 134: 'å',
+                        135: 'ç', 136: 'ê', 137: 'ë', 138: 'è', 139: 'ï', 140: 'î', 141: 'ì', 142: 'Ä', 143: 'Å',
+                        144: 'É', 145: 'æ', 146: 'Æ', 147: 'ô', 148: 'ö', 149: 'ò', 150: 'û', 151: 'ù', 152: 'ÿ',
+                        153: 'Ö', 154: 'Ü', 155: '¢', 156: '£', 157: '¥', 158: '₧', 159: 'ƒ', 160: 'á', 161: 'í',
+                        162: 'ó', 163: 'ú', 164: 'ñ', 165: 'Ñ', 166: 'ª', 167: 'º', 168: '¿', 169: '⌐', 170: '¬',
+                        171: '½', 172: '¼', 173: '¡', 174: '«', 175: '»', 176: '░', 177: '▒', 178: '▓', 179: '│',
+                        180: '┤', 181: '╡', 182: '╢', 183: '╖', 184: '╕', 185: '╣', 186: '║', 187: '╗', 188: '╝',
+                        189: '╜', 190: '╛', 191: '┐', 192: '└', 193: '┴', 194: '┬', 195: '├', 196: '─', 197: '┼',
+                        198: '╞', 199: '╟', 200: '╚', 201: '╔', 202: '╩', 203: '╦', 204: '╠', 205: '═', 206: '╬',
+                        207: '╧', 208: '╨', 209: '╤', 210: '╥', 211: '╙', 212: '╘', 213: '╒', 214: '╓', 215: '╫',
+                        216: '╪', 217: '┘', 218: '┌', 219: '█', 220: '▄', 221: '▌', 222: '▐', 223: '▀', 224: 'α',
+                        225: 'ß', 226: 'Γ', 227: 'π', 228: 'Σ', 229: 'σ', 230: 'µ', 231: 'τ', 232: 'Φ', 233: 'Θ',
+                        234: 'Ω', 235: 'δ', 236: '∞', 237: 'φ', 238: 'ε', 239: '∩', 240: '≡', 241: '±', 242: '≥',
+                        243: '≤', 244: '⌠', 245: '⌡', 246: '÷', 247: '≈', 248: '°', 249: '∙', 250: '·', 251: '√',
+                        252: 'ⁿ', 253: '²', 254: '■', 255: ' '
+                    };
 
-                for (let i = 0; i <= 255; i++) {
-                    let hexCode = i.toString(16).toUpperCase().padStart(2, '0');
-                    let int8Value = i < 128 ? i : i - 256; // Convert to signed 8-bit
-                    let binary = i.toString(2).padStart(8, '0'); // 8-bit binary representation
-                    let charDisplay = cp437[i] || 'Non-printable';
-                    document.write(`
-                        <tr>
-                            <td>${i}</td>
-                            <td>0x${hexCode}</td>
-                            <td>${int8Value}</td>
-                            <td>${binary}</td>
-                            <td>&#${i};</td>
-                            <td>${charDisplay}</td>
-                        </tr>
-                    `);
-                }
-            </script>
-        </tbody>
-    </table>
+                    function copyToClipboard(text, cell) {
+                        navigator.clipboard.writeText(text).then(() => {
+                            cell.classList.add("show-tooltip");
+                            setTimeout(() => {
+                                cell.classList.remove("show-tooltip");
+                            }, 1000);
+                        });
+                    }
+
+                    for (let i = 0; i <= 255; i++) {
+                        let hexCode = i.toString(16).toUpperCase().padStart(2, '0');
+                        let int8Value = i < 128 ? i : i - 256; // Convert to signed 8-bit
+                        let binary = i.toString(2).padStart(8, '0'); // 8-bit binary representation
+                        let charDisplay = cp437[i] || 'Non-printable';
+                        document.write(`
+                            <tr>
+                                <td onclick="copyToClipboard('${i}', this)"> ${i} <span class="tooltip">Copied!</span></td>
+                                <td onclick="copyToClipboard('0x${hexCode}', this)"> 0x${hexCode} <span class="tooltip">Copied!</span></td>
+                                <td onclick="copyToClipboard('${int8Value}', this)"> ${int8Value} <span class="tooltip">Copied!</span></td>
+                                <td onclick="copyToClipboard('${binary}', this)"> ${binary} <span class="tooltip">Copied!</span></td>
+                                <td onclick="copyToClipboard('&#${i};', this)"> &#${i}; <span class="tooltip">Copied!</span></td>
+                                <td onclick="copyToClipboard('${charDisplay}', this)"> ${charDisplay} <span class="tooltip">Copied!</span></td>
+                            </tr>
+                        `);
+                    }
+                </script>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
